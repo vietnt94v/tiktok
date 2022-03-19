@@ -35,6 +35,7 @@ exports.findAll = (req, res) => {
     else res.send(data)
   })
 }
+
 exports.findAllActive = (req, res) => {
   User.getAllActive((err, data) => {
     if (err)
