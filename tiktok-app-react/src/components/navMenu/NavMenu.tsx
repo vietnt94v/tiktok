@@ -1,13 +1,21 @@
 import React from 'react'
 import { Link, useMatch, useResolvedPath } from 'react-router-dom'
 import type { LinkProps } from 'react-router-dom'
-
 import IconPlus from '../../assets/images/icon/plus-tt.svg'
 
-function LinkNavMenu({ children, to, ...props }: LinkProps) {
+interface LinkNavMenuProps extends LinkProps {
+  iconName?: string
+  textLink?: string
+}
+function LinkNavMenu({
+  children,
+  to,
+  iconName,
+  textLink,
+  ...props
+}: LinkNavMenuProps) {
   let resolved = useResolvedPath(to)
   let match = useMatch({ path: resolved.pathname, end: true })
-  console.log(props)
 
   return (
     <Link
@@ -17,6 +25,8 @@ function LinkNavMenu({ children, to, ...props }: LinkProps) {
       to={to}
       {...props}
     >
+      {iconName ? <i className={iconName + ` text-24`}></i> : null}
+      {textLink ? <span>{textLink}</span> : null}
       {children}
     </Link>
   )
@@ -26,25 +36,21 @@ function NavMenu() {
   return (
     <footer className='bg-black border-t'>
       <div className='flex'>
-        <LinkNavMenu to='/'>
-          <i className='icon-home text-24'></i>
-          <span>Trang chủ</span>
-        </LinkNavMenu>
-        <LinkNavMenu to='/discover'>
-          <i className='icon-search text-24'></i>
-          <span>Khám phá</span>
-        </LinkNavMenu>
+        <LinkNavMenu
+          to='/'
+          iconName='icon-home'
+          textLink='Trang chủ'
+        ></LinkNavMenu>
+        <LinkNavMenu
+          to='/discover'
+          iconName='icon-search'
+          textLink='Khám phá'
+        />
         <LinkNavMenu to='/new-record'>
-          <img src={IconPlus} alt='' className='w-12' />
+          <img src={IconPlus} alt='icon plus tiktok' className='w-12' />
         </LinkNavMenu>
-        <LinkNavMenu to='/inbox'>
-          <i className='icon-mail text-24'></i>
-          <span>Hộp thư</span>
-        </LinkNavMenu>
-        <LinkNavMenu to='/profile'>
-          <i className='icon-user text-24'></i>
-          <span>Hồ sơ</span>
-        </LinkNavMenu>
+        <LinkNavMenu to='/inbox' iconName='icon-mail' textLink='Hộp thư' />
+        <LinkNavMenu to='/profile' iconName='icon-user' textLink='Hồ sơ' />
       </div>
     </footer>
   )

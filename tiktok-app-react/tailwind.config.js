@@ -8,6 +8,7 @@ module.exports = {
       16: '16px',
       20: '20px',
       24: '24px',
+      28: '28px',
       30: '30px'
     },
     extend: {}
