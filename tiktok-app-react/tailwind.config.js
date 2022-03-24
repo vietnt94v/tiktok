@@ -13,7 +13,11 @@ module.exports = {
       28: '28px',
       30: '30px'
     },
-    extend: {}
+    extend: {
+      inset: {
+        'middle-x': '50%'
+      }
+    }
   },
   plugins: []
 }

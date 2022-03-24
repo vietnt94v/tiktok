@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import IconLive from '../../assets/images/icon/live.png'
 
 function NavHeader() {
   const [activeTab, setActiveTab] = useState<Number>(1)
@@ -42,7 +41,7 @@ function NavHeader() {
         </div>
       </div>
       <div className='flex justify-center items-center p-3'>
-        <i className='fa fa-search text-18'></i>
+        <i className='far fa-search text-18'></i>
       </div>
     </div>
   )
