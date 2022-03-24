@@ -25,7 +25,7 @@ function LinkNavMenu({
       to={to}
       {...props}
     >
-      {iconName ? <i className={iconName + ` text-24`}></i> : null}
+      {iconName ? <i className={`fa-solid ` + iconName + ` text-20`}></i> : null}
       {textLink ? <span>{textLink}</span> : null}
       {children}
     </Link>
@@ -38,19 +38,19 @@ function NavMenu() {
       <div className='flex'>
         <LinkNavMenu
           to='/'
-          iconName='icon-home'
+          iconName='fa-house'
           textLink='Trang chủ'
         ></LinkNavMenu>
         <LinkNavMenu
           to='/discover'
-          iconName='icon-search'
+          iconName='fa-search'
           textLink='Khám phá'
         />
         <LinkNavMenu to='/new-record'>
-          <img src={IconPlus} alt='icon plus tiktok' className='w-12' />
+          <img src={IconPlus} alt='icon plus tiktok' className='w-14' />
         </LinkNavMenu>
-        <LinkNavMenu to='/inbox' iconName='icon-mail' textLink='Hộp thư' />
-        <LinkNavMenu to='/profile' iconName='icon-user' textLink='Hồ sơ' />
+        <LinkNavMenu to='/inbox' iconName='fa-inbox' textLink='Hộp thư' />
+        <LinkNavMenu to='/profile' iconName='fa-user' textLink='Hồ sơ' />
       </div>
     </footer>
   )

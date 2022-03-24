@@ -7,14 +7,16 @@ function NavHeader() {
   useEffect(() => {}, [])
 
   const handleActiveTab = (e: any) => {
-    setActiveTab(e.target.dataset.tab_index_header)
-    console.log(activeTab)
+    setActiveTab(Number(e.target.dataset.tab_index_header))
   }
 
   return (
     <div className='flex justify-between'>
       <div className='flex justify-center items-center p-3'>
-        <img src={IconLive} alt='icon live' className='w-6' />
+        <div className='relative border border-red-500 px-2 rounded cursor-pointer'>
+          <div className='text-red-500 mr-1'>Live</div>
+          <div className='absolute top-1 right-1 w-1 h-1 bg-white rounded'></div>
+        </div>
       </div>
       <div className='flex items-center whitespace-nowrap'>
         <div
@@ -22,7 +24,7 @@ function NavHeader() {
           data-tab_index_header={0}
           className={
             `shrink-0 px-3 cursor-pointer ease-in duration-100` +
-            (activeTab == 0 ? ' font-semibold' : '')
+            (activeTab === 0 ? ' font-semibold' : '')
           }
         >
           Đang folow
@@ -33,14 +35,14 @@ function NavHeader() {
           data-tab_index_header={1}
           className={
             `shrink-0 px-3 cursor-pointer ease-in duration-100` +
-            (activeTab == 1 ? ' font-semibold' : '')
+            (activeTab === 1 ? ' font-semibold' : '')
           }
         >
           Dành cho bạn
         </div>
       </div>
       <div className='flex justify-center items-center p-3'>
-        <i className='icon-search text-28 translate-y-0.5'></i>
+        <i className='fa fa-search text-18'></i>
       </div>
     </div>
   )
