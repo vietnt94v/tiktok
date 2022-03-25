@@ -16,6 +16,9 @@ module.exports = {
     extend: {
       inset: {
         'middle-x': '50%'
+      },
+      animation: {
+        'spin-slow': 'spin 5s linear infinite'
       }
     }
   },

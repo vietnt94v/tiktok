@@ -28,9 +28,13 @@ function NavAction() {
         <i className='fas fa-share text-28'></i>
         <div className='text-12'>4</div>
       </div>
-      <div className='w-full aspect-square rounded-full overflow-hidden bg-gradient-to-r from-white to-gray-800'>
-        <div className='p-1.5'>
-          <img src={DogMoney} alt='' className='w-full rounded-full overflow-hidden' />
+      <div className='w-full aspect-square rounded-full overflow-hidden bg-gradient-to-r from-white to-gray-800 cursor-pointer'>
+        <div className='p-1.5 animate-spin-slow duration-1000'>
+          <img
+            src={DogMoney}
+            alt=''
+            className='w-full rounded-full overflow-hidden'
+          />
         </div>
       </div>
     </div>
