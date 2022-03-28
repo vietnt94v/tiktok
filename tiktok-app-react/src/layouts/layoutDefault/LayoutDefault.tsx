@@ -3,12 +3,13 @@ import NavMenu from '../../components/navMenu/NavMenu'
 
 function LayoutDefault() {
   return (
-    <div className='flex flex-col h-screen'>
-      
-      <div className='flex-1 bg-black'>
+    <div className='h-full'>
+      <div className='h-full-n12'>
         <Outlet />
       </div>
-      <NavMenu />
+      <div className='h-12'>
+        <NavMenu />
+      </div>
     </div>
   )
 }

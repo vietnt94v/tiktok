@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function Profile() {
+  useEffect(() => {
+    console.log(1)
+  }, [])
+
   return (
-    <div>Profile</div>
+    <div>
+      <p>x</p>
+      <p>x</p>
+      <p>x</p>
+    </div>
   )
 }
 

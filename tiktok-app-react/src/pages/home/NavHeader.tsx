@@ -40,7 +40,7 @@ function NavHeader() {
           Dành cho bạn
         </div>
       </div>
-      <div className='flex justify-center items-center p-3'>
+      <div className='flex justify-center items-center p-3 cursor-pointer'>
         <i className='far fa-search text-18'></i>
       </div>
     </div>

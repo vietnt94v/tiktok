@@ -1,0 +1,5 @@
+@for $i from 0 through 100 {
+  .h-full-n#{$i} {
+    height: calc(100% - (#{$i} * 4px));
+  }
+}
