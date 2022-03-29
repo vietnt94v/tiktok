@@ -34,7 +34,7 @@ function LinkNavMenu({
 
 function NavMenu() {
   return (
-    <footer className='bg-black border-t'>
+    <footer className='bg-black border-t border-slate-500'>
       <div className='flex'>
         <LinkNavMenu
           to='/'

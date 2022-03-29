@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 
 function Profile() {
-  useEffect(() => {
-    console.log(1)
-  }, [])
+  useEffect(() => {}, [])
 
   return (
     <div>

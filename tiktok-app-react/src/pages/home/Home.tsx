@@ -15,8 +15,7 @@ function Home() {
 
   const handleGetInitVideoList = () => {
     VideoService.getAll().then(res => {
-      const videoListRes = res.data
-      setVideoList(videoListRes)
+      setVideoList(res.data)
     })
   }
   return (
@@ -30,10 +29,12 @@ function Home() {
         direction={'vertical'}
         slidesPerView={1}
         onSlideChange={() => console.log('slide change')}
-        onSwiper={swiper => console.log(swiper)}
       >
         {videoList.map((video, index) => (
-          <SwiperSlide className='w-full h-full flex justify-center items-center'>
+          <SwiperSlide
+            className='w-full h-full flex justify-center items-center'
+            key={index}
+          >
             <div className=''>
               <video
                 src={video.video_url}
