@@ -11,7 +11,8 @@ interface Video {
   video_status: number
   video_url: string
   created_at: Date
-  updated_at: Date
+  updated_at: Date,
+  pause: boolean
 }
 
 export default Video
