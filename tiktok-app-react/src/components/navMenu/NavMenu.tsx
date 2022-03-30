@@ -39,14 +39,14 @@ function NavMenu() {
         <LinkNavMenu
           to='/'
           iconName='fa-home-alt'
-          textLink='Trang chủ'
+          textLink='Home'
         ></LinkNavMenu>
-        <LinkNavMenu to='/discover' iconName='fa-search' textLink='Khám phá' />
+        <LinkNavMenu to='/discover' iconName='fa-search' textLink='Discover' />
         <LinkNavMenu to='/new-record'>
           <img src={IconPlus} alt='icon plus tiktok' className='w-14' />
         </LinkNavMenu>
-        <LinkNavMenu to='/inbox' iconName='fa-inbox' textLink='Hộp thư' />
-        <LinkNavMenu to='/profile' iconName='fa-user' textLink='Hồ sơ' />
+        <LinkNavMenu to='/inbox' iconName='fa-inbox' textLink='Inbox' />
+        <LinkNavMenu to='/profile' iconName='fa-user' textLink='Profile' />
       </div>
     </footer>
   )
