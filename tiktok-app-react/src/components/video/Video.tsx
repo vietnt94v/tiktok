@@ -1,13 +1,25 @@
+import { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import VideoModel from '../../models/Video'
+import { VideoX } from '../../pages/home/Home'
 import NavAction from './NavAction'
 import NavInfo from './NavInfo'
 
 interface Props {
-  videos: VideoModel[]
+  videos: VideoX[]
 }
 
 function Video({ videos }: Props) {
+  const [videoS, setVideoS] = useState<VideoX[]>([])
+
+  useEffect(() => {
+    setVideoS([...videos])
+  }, [videos])
+
+  const pauseVideo = (video: VideoX) => {
+    video.togglePause()
+    setVideoS([...videoS])
+  }
+
   return (
     <Swiper
       className='w-full'
@@ -15,7 +27,7 @@ function Video({ videos }: Props) {
       slidesPerView={1}
       onSlideChange={() => console.log('slide change')}
     >
-      {videos.map((video, index) => (
+      {videoS.map((video, index) => (
         <SwiperSlide
           className='w-full h-full flex justify-center items-center'
           key={index}
@@ -28,8 +40,12 @@ function Video({ videos }: Props) {
               loop
               className='max-w-full max-h-full m-auto'
             />
-            <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center'>
-              <i className='fas fa-play text-50 translate-x-2'></i>
+            <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center '>
+              <i
+                className='fas fa-play text-50 translate-x-2'
+                onClick={() => pauseVideo(video)}
+              ></i>
+              {String(video.pause)}
             </div>
             <div className='absolute bottom-5 right-2 z-50'>
               <NavAction action={video} />

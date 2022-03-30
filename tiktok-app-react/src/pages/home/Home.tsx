@@ -4,8 +4,21 @@ import VideoService from '../../services/video.service'
 import NavHeader from './NavHeader'
 import Video from '../../components/video/Video'
 
+export class VideoX extends VideoModel {
+  pause: boolean = false
+
+  constructor(init?: Partial<VideoX>) {
+    super()
+    Object.assign(this, init)
+  }
+
+  togglePause() {
+    this.pause = !this.pause
+  }
+}
+
 function Home() {
-  const [videoList, setVideoList] = useState<VideoModel[]>([])
+  const [videoList, setVideoList] = useState<VideoX[]>([])
 
   useEffect(() => {
     handleGetInitVideoList()
@@ -13,7 +26,8 @@ function Home() {
 
   const handleGetInitVideoList = () => {
     VideoService.getAll().then(res => {
-      setVideoList(res.data)
+      const data = res.data.map((item: VideoModel) => new VideoX(item))
+      setVideoList([...data])
     })
   }
 
