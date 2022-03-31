@@ -1,0 +1,10 @@
+.music-fly {
+  animation: music-fly 2.6s infinite linear;
+  & + & {
+    animation-delay: 1.3s;
+  }
+}
+
+.text-stream {
+  animation: text-stream 5s infinite linear;
+}
