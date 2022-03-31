@@ -6,9 +6,10 @@ import NavInfo from './NavInfo'
 
 interface Props {
   videos: VideoX[]
+  loadMoreVideo: () => void
 }
 
-function Video({ videos }: Props) {
+function Video({ videos, loadMoreVideo }: Props) {
   const [videoS, setVideoS] = useState<VideoX[]>([])
 
   useEffect(() => {
@@ -25,7 +26,7 @@ function Video({ videos }: Props) {
       className='w-full'
       direction={'vertical'}
       slidesPerView={1}
-      onSlideChange={() => console.log('slide change')}
+      onReachEnd={() => loadMoreVideo()}
     >
       {videoS.map((video, index) => (
         <SwiperSlide
@@ -38,14 +39,17 @@ function Video({ videos }: Props) {
               key={index}
               autoPlay
               loop
+              muted
               className='max-w-full max-h-full m-auto'
             />
-            <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center '>
-              <i
-                className='fas fa-play text-50 translate-x-2'
-                onClick={() => pauseVideo(video)}
-              ></i>
-              {String(video.pause)}
+
+            <div
+              className='absolute top-0 left-0 w-full h-full flex justify-center items-center'
+              onClick={() => pauseVideo(video)}
+            >
+              {video.pause ? (
+                <i className='fas fa-play text-50 translate-x-2'></i>
+              ) : null}
             </div>
             <div className='absolute bottom-5 right-2 z-50'>
               <NavAction action={video} />

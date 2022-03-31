@@ -24,7 +24,7 @@ Video.create = (newVideo, result) => {
 }
 
 Video.getAll = (name, result) => {
-  let query = 'SELECT v.*, u.user_name, u.user_avatar FROM videos v JOIN users u ON v.owner_id = u.id WHERE status = 1'
+  let query = 'SELECT v.*, u.user_name, u.user_avatar FROM videos v JOIN users u ON v.owner_id = u.id WHERE video_status = 1'
   sql.query(query, (err, res) => {
     if (err) {
       result(null, err)
