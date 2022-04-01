@@ -1,35 +1,35 @@
 module.exports = (sequelize, Sequelize) => {
   const Video = sequelize.define('video', {
     owner_id: {
-      type: Sequelize.NUMBER
+      type: Sequelize.INTEGER(11)
     },
     user_name: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.STRING(255)
     },
     user_avatar: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.STRING(255)
     },
     title: {
-      type: Sequelize.BOOLEAN
+      type: Sequelize.STRING(255)
     },
     comment_count: {
-      type: Sequelize.NUMBER
+      type: Sequelize.INTEGER(11)
     },
     favorite_count: {
-      type: Sequelize.NUMBER
+      type: Sequelize.INTEGER(11)
     },
     share_count: {
-      type: Sequelize.NUMBER
+      type: Sequelize.INTEGER(11)
     },
     music_id: {
-      type: Sequelize.NUMBER
+      type: Sequelize.INTEGER(11)
     },
     video_status: {
-      type: Sequelize.NUMBER
+      type: Sequelize.DECIMAL(1, 0)
     },
-    video_url: {
-      type: Sequelize.BOOLEAN
-    },
+    video_src: {
+      type: Sequelize.TEXT
+    }
   })
-  return Tutorial
+  return Video
 }

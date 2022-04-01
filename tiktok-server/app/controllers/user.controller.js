@@ -14,7 +14,7 @@ exports.create = (req, res) => {
     following: 0,
     follower: 0,
     favorite: 0,
-    status: 1
+    status: req.body.status
   })
   User.create(user, (err, data) => {
     if (err)

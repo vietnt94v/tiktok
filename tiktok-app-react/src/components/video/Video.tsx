@@ -35,7 +35,7 @@ function Video({ videos, loadMoreVideo }: Props) {
         >
           <div className='relative flex items-center w-full h-full'>
             <video
-              src={video.video_url}
+              src={video.video_src}
               key={index}
               autoPlay
               loop

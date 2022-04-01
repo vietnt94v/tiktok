@@ -9,7 +9,7 @@ class Video {
   share_count!: number
   music_id!: number
   video_status!: number
-  video_url: string = ''
+  video_src: string = ''
   created_at!: Date
   updated_at!: Date
 }
