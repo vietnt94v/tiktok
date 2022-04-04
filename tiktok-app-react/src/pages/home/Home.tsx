@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react'
 import VideoModel from '../../models/Video'
 import VideoService from '../../services/video.service'
 import NavHeader from './NavHeader'
-import Video from '../../components/video/Video'
+import VideoList from '../../components/video/VideoList'
 
 export class VideoX extends VideoModel {
   pause: boolean = false
+  type: string = 'video/mp4'
 
   constructor(init?: Partial<VideoX>) {
     super()
@@ -50,6 +51,7 @@ function Home() {
         user_name: 'vietnt',
         user_avatar: 'https://prnt.sc/RP3aUXgogyrF',
         pause: false,
+        type: 'video/mp4',
         togglePause: function (): void {
           throw new Error('Function not implemented.')
         }
@@ -57,7 +59,6 @@ function Home() {
     ]
 
     setVideoList([...videoList, ...newVideoLoadedArray])
-    console.log(videoList)
   }
 
   return (
@@ -65,7 +66,7 @@ function Home() {
       <div className='absolute top-0 left-0 w-full z-50'>
         <NavHeader />
       </div>
-      <Video videos={videoList} loadMoreVideo={loadMoreVideo} />
+      <VideoList videos={videoList} loadMoreVideo={loadMoreVideo} />
     </div>
   )
 }

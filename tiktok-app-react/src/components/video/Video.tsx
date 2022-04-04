@@ -1,66 +1,49 @@
-import { useEffect, useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { VideoX } from '../../pages/home/Home'
-import NavAction from './NavAction'
-import NavInfo from './NavInfo'
+import React, { useEffect, useRef } from 'react'
+import videojs from 'video.js'
+import 'video.js/dist/video-js.css'
 
 interface Props {
-  videos: VideoX[]
-  loadMoreVideo: () => void
+  options: any
+  onReady: any
 }
 
-function Video({ videos, loadMoreVideo }: Props) {
-  const [videoS, setVideoS] = useState<VideoX[]>([])
+function Video({ options, onReady }: Props) {
+  const videoRef = useRef<any>(null)
+  const playerRef = useRef<any>(null)
 
   useEffect(() => {
-    setVideoS([...videos])
-  }, [videos])
+    // make sure Video.js player is only initialized once
+    if (!playerRef.current) {
+      const videoElement = videoRef.current
+      if (!videoElement) return
 
-  const pauseVideo = (video: VideoX) => {
-    video.togglePause()
-    setVideoS([...videoS])
-  }
+      const player = (playerRef.current = videojs(videoElement, options, () => {
+        console.log('player is ready')
+        onReady && onReady(player)
+      }))
+    } else {
+      // you can update player here [update player through props]
+      const player = playerRef.current
+      player.autoplay(options.autoplay)
+      player.src(options.sources)
+    }
+  }, [options, videoRef])
+
+  useEffect(() => {
+    const player = playerRef.current
+
+    return () => {
+      if (player) {
+        player.dispose()
+        playerRef.current = null
+      }
+    }
+  }, [playerRef])
 
   return (
-    <Swiper
-      className='w-full'
-      direction={'vertical'}
-      slidesPerView={1}
-      onReachEnd={() => loadMoreVideo()}
-    >
-      {videoS.map((video, index) => (
-        <SwiperSlide
-          className='w-full h-full flex justify-center items-center'
-          key={index}
-        >
-          <div className='relative flex items-center w-full h-full'>
-            <video
-              src={video.video_src}
-              key={index}
-              autoPlay
-              loop
-              muted
-              className='max-w-full max-h-full m-auto'
-            />
-
-            <div
-              className='absolute top-0 left-0 w-full h-full flex justify-center items-center'
-              onClick={() => pauseVideo(video)}
-            >
-              {video.pause ? (
-                <i className='fas fa-play text-50 translate-x-2'></i>
-              ) : null}
-            </div>
-            <div className='absolute bottom-5 right-2 z-50'>
-              <NavAction action={video} />
-            </div>
-            <div className='absolute bottom-0 left-0 w-full pl-3 pr-24 pb-3'>
-              <NavInfo info={video} />
-            </div>
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div data-vjs-player>
+      <video ref={videoRef} className='video-js vjs-big-play-centered' />
+    </div>
   )
 }
 

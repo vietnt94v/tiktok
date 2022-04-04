@@ -2,7 +2,7 @@ import http from '../http-common'
 
 class VideoService {
   getAll() {
-    return http.get('/video')
+    return http.get('/videos')
   }
 }
 

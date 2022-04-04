@@ -38,7 +38,17 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const title = req.query.title
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null
-  Video.findAll({ where: condition })
+  // Video.findAll({ where: condition })
+  Video.findAll({
+    // where: title
+    //   ? { title: { [Op.like]: `%${title}%` }, video_status: 1 }
+    //   : { video_status: 1 }
+
+    where: {
+      video_status: 1,
+      title: { [Op.like]: `%${title}%` }
+    }
+  })
     .then(data => {
       res.send(data)
     })
