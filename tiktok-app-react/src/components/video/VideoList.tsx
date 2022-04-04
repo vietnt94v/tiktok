@@ -16,7 +16,7 @@ function VideoList({ videos, loadMoreVideo }: Props) {
 
   let sourceVideo: any[] = [
     {
-      src: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
+      src: 'https://v16-webapp.tiktok.com/3c60f02124344b8a5cddf2a769cd5e1a/624b15ff/video/tos/useast2a/tos-useast2a-pve-0037-aiso/fb3e9e22a15743d3bda86fced4cb9209/?a=1988&br=1892&bt=946&cd=0%7C0%7C1%7C0&ch=0&cr=0&cs=0&cv=1&dr=0&ds=3&er=&ft=XOQ9-3LGnz7ThXDTqDXq&l=2022040409595201025100418512352567&lr=tiktok&mime_type=video_mp4&net=0&pl=0&qs=0&rc=MzlsaDg6Zmo1OzMzZjgzM0ApaDQ6NjhpaTs0NzkzNWU7PGc2YGBpcjRvay5gLS1kL2Nzc2EyYzUxYjQzMTIzYjUzMC86Yw%3D%3D&vl=&vr=',
       type: 'video/mp4'
     }
   ]
