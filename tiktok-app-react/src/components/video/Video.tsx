@@ -12,7 +12,6 @@ function Video({ options, onReady }: Props) {
   const playerRef = useRef<any>(null)
 
   useEffect(() => {
-    // make sure Video.js player is only initialized once
     if (!playerRef.current) {
       const videoElement = videoRef.current
       if (!videoElement) return
@@ -22,10 +21,12 @@ function Video({ options, onReady }: Props) {
         onReady && onReady(player)
       }))
     } else {
-      // you can update player here [update player through props]
       const player = playerRef.current
-      player.autoplay(options.autoplay)
-      player.src(options.sources)
+
+      if (options.sources.length > 0) {
+        player.autoplay(options.autoplay)
+        player.src(options.sources)
+      }
     }
   }, [options, videoRef])
 

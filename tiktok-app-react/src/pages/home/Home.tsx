@@ -6,7 +6,6 @@ import VideoList from '../../components/video/VideoList'
 
 export class VideoX extends VideoModel {
   pause: boolean = false
-  type: string = 'video/mp4'
 
   constructor(init?: Partial<VideoX>) {
     super()
@@ -51,7 +50,6 @@ function Home() {
         user_name: 'vietnt',
         user_avatar: 'https://prnt.sc/RP3aUXgogyrF',
         pause: false,
-        type: 'video/mp4',
         togglePause: function (): void {
           throw new Error('Function not implemented.')
         }

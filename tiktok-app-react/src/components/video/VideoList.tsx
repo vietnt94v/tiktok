@@ -4,7 +4,6 @@ import { VideoX } from '../../pages/home/Home'
 import Video from './Video'
 import NavAction from './NavAction'
 import NavInfo from './NavInfo'
-import videojs from 'video.js'
 
 interface Props {
   videos: VideoX[]
@@ -15,17 +14,28 @@ function VideoList({ videos, loadMoreVideo }: Props) {
   const [videoS, setVideoS] = useState<VideoX[]>([])
   const playerRef = useRef<any>(null)
 
+  let sourceVideo: any[] = [
+    {
+      src: 'https://media.w3.org/2010/05/sintel/trailer_hd.mp4',
+      type: 'video/mp4'
+    }
+  ]
+
   useEffect(() => {
     setVideoS([...videos])
-  }, [videos])
 
+    sourceVideo = videos.map(video => ({
+      src: video.video_src,
+      type: 'type/mp4'
+    }))
+  }, [videos])
 
   const videoJsOptions = {
     autoplay: true,
     controls: true,
     responsive: true,
     fluid: true,
-    sources: videos.map(video => video.video_src)
+    sources: sourceVideo
   }
 
   const handlePlayerReady = (player: any) => {
