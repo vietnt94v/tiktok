@@ -14,5 +14,14 @@ class Video {
   updated_at!: Date
 }
 
+export class VideoExtendProperty extends Video {
+  newProperty: boolean = true
+
+  constructor(init?: Partial<VideoExtendProperty>) {
+    super()
+    Object.assign(this, init)
+  }
+}
+
 export default Video
 
