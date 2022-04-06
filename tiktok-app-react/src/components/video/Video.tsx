@@ -1,6 +1,10 @@
 import VideoModel from '../../models/Video'
 
-function Video(videoDetail: VideoModel) {
+interface Props {
+  videoDetail: VideoModel
+}
+
+function Video({ videoDetail }: Props) {
   return (
     <>
       <video src={videoDetail.video_src}></video>

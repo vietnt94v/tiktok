@@ -23,5 +23,15 @@ export class VideoExtendProperty extends Video {
   }
 }
 
+
+export class VideoExtendPlay extends Video {
+  video_status_playing: boolean = false
+
+  constructor(init?: Partial<VideoExtendPlay>) {
+    super()
+    Object.assign(this, init)
+  }
+}
+
 export default Video
 

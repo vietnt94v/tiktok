@@ -40,14 +40,9 @@ exports.findAll = (req, res) => {
   var condition = title ? { title: { [Op.like]: `%${title}%` } } : null
   // Video.findAll({ where: condition })
   Video.findAll({
-    // where: title
-    //   ? { title: { [Op.like]: `%${title}%` }, video_status: 1 }
-    //   : { video_status: 1 }
-
-    where: {
-      video_status: 1,
-      title: { [Op.like]: `%${title}%` }
-    }
+    where: title
+      ? { title: { [Op.like]: `%${title}%` }, video_status: 1 }
+      : { video_status: 1 }
   })
     .then(data => {
       res.send(data)
