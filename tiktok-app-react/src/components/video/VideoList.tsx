@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import VideoModel from '../../models/Video'
 import { VideoExtendPlay } from '../../models/Video'
-// import Video from './Video'
 import NavAction from './NavAction'
 import NavInfo from './NavInfo'
 
@@ -18,9 +17,10 @@ function VideoList({ videos, loadMoreVideo }: Props) {
   const videosRefs = useRef(new Array(videos.length))
 
   useEffect(() => {
-    setVideosExtendPlay(
-      videos.map((video: VideoModel) => new VideoExtendPlay(video))
-    )
+    setVideosExtendPlay([
+      ...videosExtendPlay,
+      ...videos.map((video: VideoModel) => new VideoExtendPlay(video))
+    ])
   }, [videos])
 
   const handleToggleVideo = (video: VideoExtendPlay, index: number) => {
@@ -31,13 +31,43 @@ function VideoList({ videos, loadMoreVideo }: Props) {
       : videosRefs.current[index].pause()
   }
 
+  const handleVideoActiveSlide = (slide: any) => {
+    const index = slide.activeIndex
+
+    if (videosExtendPlay[index - 1]) {
+      videosRefs.current[index - 1].pause()
+      videosExtendPlay[index - 1].video_status_playing = false
+    }
+
+    if (videosExtendPlay[index + 1]) {
+      videosRefs.current[index + 1].pause()
+      videosExtendPlay[index + 1].video_status_playing = false
+    }
+
+    videosRefs.current[index].play()
+    videosExtendPlay[index].video_status_playing = true
+
+    // setVideosExtendPlay([...videosExtendPlay])
+  }
+
+  const handleX = (slide: any) => {
+    const index = slide.activeIndex
+    if (videosExtendPlay[index]) {
+      console.log(1)
+      videosRefs.current[index].play()
+    } else {
+      console.log(9)
+    }
+  }
+
   return (
     <Swiper
       className='w-full'
       direction={'vertical'}
       slidesPerView={1}
-      onSlideChange={() => {
-        console.log('slide change')
+      onSwiper={slide => handleX(slide)}
+      onSlideChange={slide => {
+        handleVideoActiveSlide(slide)
       }}
       onReachEnd={() => loadMoreVideo()}
     >
