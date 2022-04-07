@@ -21,6 +21,9 @@ function VideoList({ videos, loadMoreVideo }: Props) {
       ...videosExtendPlay,
       ...videos.map((video: VideoModel) => new VideoExtendPlay(video))
     ])
+    setTimeout(() => {
+      videosRefs.current[0].play()
+    }, 1)
   }, [videos])
 
   const handleToggleVideo = (video: VideoExtendPlay, index: number) => {
@@ -47,7 +50,7 @@ function VideoList({ videos, loadMoreVideo }: Props) {
     videosRefs.current[index].play()
     videosExtendPlay[index].video_status_playing = true
 
-    // setVideosExtendPlay([...videosExtendPlay])
+    setVideosExtendPlay([...videosExtendPlay])
   }
 
   const handleX = (slide: any) => {
@@ -79,6 +82,7 @@ function VideoList({ videos, loadMoreVideo }: Props) {
           <div className='relative flex items-center w-full h-full'>
             <video
               loop
+              muted
               ref={el => (videosRefs.current[index] = el)}
               src={video.video_src}
             ></video>
