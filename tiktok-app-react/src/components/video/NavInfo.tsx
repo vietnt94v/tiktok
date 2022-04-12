@@ -1,8 +1,8 @@
 import React from 'react'
-import VideoModel from '../../models/Video'
+import { VideoExtendPlay } from '../../models/Video'
 
 interface Props {
-  info: VideoModel
+  info: VideoExtendPlay
 }
 
 function NavInfo({ info }: Props) {
@@ -15,7 +15,11 @@ function NavInfo({ info }: Props) {
           <i className='fas fa-music'></i>
         </div>
         <div className='block font-300 mx-2 overflow-hidden'>
-          <div className='text-stream flex whitespace-nowrap'>
+          <div
+            className={`flex whitespace-nowrap ${
+              info.video_status_playing ? 'text-stream' : ''
+            }`}
+          >
             <div className='pr-5'>{info.music_id} @Lạc trôi ST.MVP</div>
             <div className='pr-5'>{info.music_id} @Lạc trôi ST.MVP</div>
             <div className='pr-5'>{info.music_id} @Lạc trôi ST.MVP</div>

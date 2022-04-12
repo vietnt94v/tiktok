@@ -50,22 +50,11 @@ function VideoList({ videos, loadMoreVideo }: Props) {
     setVideosExtendPlay([...videosExtendPlay])
   }
 
-  const handleX = (slide: any) => {
-    const index = slide.activeIndex
-    if (videosExtendPlay[index]) {
-      console.log(1)
-      videosRefs.current[index].play()
-    } else {
-      console.log(9)
-    }
-  }
-
   return (
     <Swiper
       className='w-full'
       direction={'vertical'}
       slidesPerView={1}
-      onSwiper={slide => handleX(slide)}
       onSlideChange={slide => {
         handleVideoActiveSlide(slide)
       }}
