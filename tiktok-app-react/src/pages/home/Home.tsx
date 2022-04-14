@@ -7,6 +7,8 @@ import VideoList from '../../components/video/VideoList'
 function Home() {
   const [videos, setVideos] = useState<VideoModel[]>([])
   const [loadingVideo, setLoadingVideo] = useState(false)
+  const [page, setPage] = useState(2)
+  const [limit, setLimit] = useState(2)
 
   useEffect(() => {
     handleGetInitVideoList()
@@ -15,9 +17,9 @@ function Home() {
 
   const handleGetInitVideoList = async () => {
     setLoadingVideo(true)
-    await VideoService.getAll()
+    await VideoService.getAll(page, limit)
       .then(res => {
-        setVideos([...res.data])
+        setVideos([...res.data.videos])
       })
       .catch(err => console.log(err))
     setLoadingVideo(false)

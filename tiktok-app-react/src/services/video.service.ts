@@ -1,8 +1,8 @@
 import http from '../http-common'
 
 class VideoService {
-  getAll() {
-    return http.get('/videos')
+  getAll(page?: number, size?: number) {
+    return http.get(`/videos?page=${page}&size=${size}`)
   }
 }
 
