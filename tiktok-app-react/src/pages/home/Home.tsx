@@ -7,26 +7,42 @@ import VideoList from '../../components/video/VideoList'
 function Home() {
   const [videos, setVideos] = useState<VideoModel[]>([])
   const [loadingVideo, setLoadingVideo] = useState(false)
-  const [page, setPage] = useState(2)
+  const [page, setPage] = useState(1)
   const [limit, setLimit] = useState(2)
+  const [totalPage, setTotalPage] = useState(1)
 
   useEffect(() => {
     handleGetInitVideoList()
-    loadMoreVideo()
   }, [])
 
   const handleGetInitVideoList = async () => {
     setLoadingVideo(true)
     await VideoService.getAll(page, limit)
       .then(res => {
-        setVideos([...res.data.videos])
+        setTotalPage(res.data.totalPages)
+        setVideos(res.data.videos)
       })
       .catch(err => console.log(err))
     setLoadingVideo(false)
   }
 
-  const loadMoreVideo = () => {
-    console.log('More video loaded')
+  const handleGetMoreVideoList = async () => {
+    VideoService.getAll(page, limit)
+      .then(res => {
+        // console.log(page)
+        // console.log(videos)
+        // console.log(res.data.videos)
+        // setVideos([...videos, ...res.data.videos])
+      })
+      .catch(err => console.log(err))
+  }
+
+  const loadMoreVideo = async () => {
+    setPage(page + 1)
+    if (page <= totalPage) {
+      console.log(page)
+      handleGetMoreVideoList()
+    }
   }
 
   return (
