@@ -16,6 +16,8 @@ function Home() {
   }, [])
 
   const handleGetInitVideoList = async () => {
+    console.log('handleGetInitVideoList')
+
     setLoadingVideo(true)
     await VideoService.getAll(page, limit)
       .then(res => {
@@ -29,19 +31,22 @@ function Home() {
   const handleGetMoreVideoList = async () => {
     VideoService.getAll(page, limit)
       .then(res => {
-        // console.log(page)
-        // console.log(videos)
-        // console.log(res.data.videos)
         // setVideos([...videos, ...res.data.videos])
       })
       .catch(err => console.log(err))
   }
 
   const loadMoreVideo = async () => {
-    setPage(page + 1)
+    setPage(page + 23)
+    console.log('page: ' + page)
+
     if (page <= totalPage) {
-      console.log(page)
-      handleGetMoreVideoList()
+      VideoService.getAll(page, limit)
+        .then(res => {
+          // setVideos([...videos, ...res.data.videos])
+          console.log(res.data.videos)
+        })
+        .catch(err => console.log(err))
     }
   }
 
