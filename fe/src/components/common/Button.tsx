@@ -4,6 +4,7 @@ interface ButtonProps {
   onClick?: () => void;
   disable?: boolean;
   children?: React.ReactNode;
+  fullWidth?: boolean;
   size?: "sm" | "md" | "lg";
   color?: "orange" | "blue" | "green" | "red" | "yellow" | "purple";
 }
@@ -27,15 +28,18 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   disable,
   children,
+  fullWidth,
   size = "md",
-  color = "blue",
+  color = "orange",
 }) => {
   return (
     <>
       <button
         onClick={onClick}
         disabled={disable}
-        className={`${sizeClasses[size]} ${colorClasses[color]} cursor-pointer rounded`}
+        className={`cursor-pointer rounded transition duration-100 ease-in-out ${sizeClasses[size]} ${colorClasses[color]} ${fullWidth ? "w-full" : ""} ${
+          disable ? "cursor-not-allowed opacity-50" : ""
+        } `}
       >
         {children}
       </button>
