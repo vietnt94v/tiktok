@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "store": "Cửa hàng",
+    "upload": "Tải lên",
+    "mail": "Hộp thư",
+    "profile": "Hồ sơ"
+  },
+  "login": {
+    "title": "Đăng nhập",
+    "usernamePlaceholder": "Email hoặc TikTok ID",
+    "passwordPlaceholder": "Mật khẩu",
+    "submit": "Đăng nhập",
+    "error": "Tài khoản hoặc mật khẩu không đúng"
+  }
+}

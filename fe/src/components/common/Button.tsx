@@ -37,9 +37,7 @@ const Button: React.FC<ButtonProps> = ({
       <button
         onClick={onClick}
         disabled={disabled}
-        className={`cursor-pointer rounded transition duration-100 ease-in-out ${sizeClasses[size]} ${colorClasses[color]} ${className} ${
-          disabled ? "cursor-not-allowed opacity-50" : ""
-        } `}
+        className={`${sizeClasses[size]} ${colorClasses[color]} ${className} cursor-pointer rounded transition duration-100 ease-in-out disabled:cursor-not-allowed disabled:opacity-50`}
       >
         {children}
       </button>

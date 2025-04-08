@@ -1,0 +1,16 @@
+{
+  "nav": {
+    "home": "Home",
+    "store": "Store",
+    "upload": "Upload",
+    "mail": "Mail",
+    "profile": "Profile"
+  },
+  "login": {
+    "title": "Login",
+    "usernamePlaceholder": "Email or TikTok ID",
+    "passwordPlaceholder": "Password",
+    "submit": "Login",
+    "error": "Incorrect username or password"
+  }
+}

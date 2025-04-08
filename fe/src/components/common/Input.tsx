@@ -50,7 +50,7 @@ const Input: React.FC<InputProps> = ({
       id={id}
       autoComplete={autoComplete}
       required={required}
-      className={`w-full rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none ${sizeClasses[size]} ${className}`}
+      className={`${sizeClasses[size]} ${className} w-full rounded-md border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none`}
     />
   );
 };

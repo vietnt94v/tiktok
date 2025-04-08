@@ -4,7 +4,7 @@ import { router } from "./router";
 function App() {
   return (
     <>
-      <div className="mx-auto h-screen w-full max-w-[420px] bg-black text-white">
+      <div className="relative mx-auto h-screen w-full max-w-[420px] bg-black text-white">
         <RouterProvider router={router} />
       </div>
     </>
